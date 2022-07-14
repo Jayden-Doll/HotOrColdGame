@@ -1,23 +1,16 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect } from "react";
+import "./App.css";
+import "./components/gameInput/gameInput.component";
+import GameInput from "./components/gameInput/gameInput.component";
+import Title from "./components/title/title.component";
 
 function App() {
+  const userValue = 34;
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Title text="Guess The Num!" />
+      <GameInput secretNumber={userValue} />
     </div>
   );
 }
