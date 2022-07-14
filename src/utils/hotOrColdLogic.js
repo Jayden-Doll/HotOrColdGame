@@ -29,6 +29,11 @@ export const hotOrColdLogic = (
     (numGuess <= secretNumber + 66 && numGuess > secretNumber)
   ) {
     setGuessInfoText("You're freezing...");
+  } else if (
+    (numGuess >= secretNumber - 100 && numGuess < secretNumber) ||
+    (numGuess <= secretNumber + 100 && numGuess > secretNumber)
+  ) {
+    setGuessInfoText("You're freezing...");
   } else if (numGuess === "") {
     setGuessInfoText("Choose any number from 1 to 100!");
   }
