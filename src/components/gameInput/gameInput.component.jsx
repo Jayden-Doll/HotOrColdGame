@@ -4,7 +4,12 @@ import "./gameInput.styles.css";
 
 const GameInput = ({ secretNumber }) => {
   const [numGuess, setNumGuess] = useState("");
-  const [guessInfoText, setGuessInfoText] = useState("Enter a Guess!");
+
+  const [isDisabled, setIsDisabled] = useState(false);
+
+  const [guessInfoText, setGuessInfoText] = useState(
+    "Enter a number from 1 - 100!"
+  );
 
   const onNumChange = (event) => {
     const inputValue = parseInt(event.target.value);
@@ -13,12 +18,11 @@ const GameInput = ({ secretNumber }) => {
 
   useEffect(() => {
     hotOrColdLogic(numGuess, setGuessInfoText, secretNumber, setNumGuess);
+    if (secretNumber && numGuess === secretNumber) {
+      setIsDisabled(false);
+    }
     //eslint-disable-next-line
   }, [numGuess]);
-
-  useEffect(() => {
-    setGuessInfoText("Enter a Guess!");
-  }, []);
 
   return (
     <>
@@ -27,6 +31,7 @@ const GameInput = ({ secretNumber }) => {
         type="text"
         onChange={(event) => onNumChange(event)}
         value={numGuess}
+        disabled={isDisabled}
       />
       <h2 className="span">{guessInfoText}</h2>
     </>

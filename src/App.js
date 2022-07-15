@@ -10,11 +10,11 @@ function App() {
   useEffect(() => {
     const randomNumber = Math.floor(Math.random() * 100) + 1;
     setRandomNumber(randomNumber);
-  }, [randomNumber]);
+  }, []);
 
   return (
     <div className="App">
-      <Title text="Guess The Num!" />
+      <Title text="Guess The Number!" />
       <GameInput secretNumber={randomNumber} />
     </div>
   );

@@ -10,25 +10,20 @@ export const hotOrColdLogic = (
   } else if (numGuess === secretNumber) {
     setGuessInfoText("YAY YOU WON OMG");
   } else if (
-    (numGuess >= secretNumber - 5 && numGuess < secretNumber) ||
-    (numGuess <= secretNumber + 5 && numGuess > secretNumber)
+    (numGuess >= secretNumber - 2 && numGuess < secretNumber) ||
+    (numGuess <= secretNumber + 2 && numGuess > secretNumber)
   ) {
-    setGuessInfoText("getting very warm...");
+    setGuessInfoText("getting very hot...");
   } else if (
-    (numGuess >= secretNumber - 10 && numGuess < secretNumber) ||
-    (numGuess <= secretNumber + 10 && numGuess > secretNumber)
+    (numGuess >= secretNumber - 8 && numGuess < secretNumber) ||
+    (numGuess <= secretNumber + 8 && numGuess > secretNumber)
   ) {
     setGuessInfoText("getting warmer...");
   } else if (
-    (numGuess >= secretNumber - 30 && numGuess < secretNumber) ||
-    (numGuess <= secretNumber + 30 && numGuess > secretNumber)
+    (numGuess >= secretNumber - 32 && numGuess < secretNumber) ||
+    (numGuess <= secretNumber + 32 && numGuess > secretNumber)
   ) {
     setGuessInfoText("You're cold...");
-  } else if (
-    (numGuess >= secretNumber - 66 && numGuess < secretNumber) ||
-    (numGuess <= secretNumber + 66 && numGuess > secretNumber)
-  ) {
-    setGuessInfoText("You're freezing...");
   } else if (
     (numGuess >= secretNumber - 100 && numGuess < secretNumber) ||
     (numGuess <= secretNumber + 100 && numGuess > secretNumber)
