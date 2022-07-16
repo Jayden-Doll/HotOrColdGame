@@ -19,7 +19,7 @@ const GameInput = ({ secretNumber }) => {
   useEffect(() => {
     hotOrColdLogic(numGuess, setGuessInfoText, secretNumber, setNumGuess);
     if (secretNumber && numGuess === secretNumber) {
-      setIsDisabled(false);
+      setIsDisabled(true);
     }
     //eslint-disable-next-line
   }, [numGuess]);
