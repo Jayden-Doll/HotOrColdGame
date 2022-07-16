@@ -10,8 +10,6 @@ export const hotOrColdLogic = (
   const numberDifference = Math.abs(
     getNumberDifference(numGuess, secretNumber)
   );
-  console.log(`Number Difference: ${numberDifference}`);
-  console.log(`Random num: ${secretNumber}`);
   if (numGuess > 100 || numGuess <= 0) {
     setGuessInfoText("Enter a number from 1 - 100!");
     setNumGuess("");

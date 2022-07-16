@@ -1,8 +1,11 @@
+import { motion } from "framer-motion";
+
 import { useState, useEffect } from "react";
 import { hotOrColdLogic } from "../../utils";
+
 import "./gameInput.styles.css";
 
-const GameInput = ({ secretNumber }) => {
+const GameInput = ({ secretNumber, bodyColor, setColor }) => {
   const [numGuess, setNumGuess] = useState("");
 
   const [isDisabled, setIsDisabled] = useState(false);
@@ -20,20 +23,22 @@ const GameInput = ({ secretNumber }) => {
     hotOrColdLogic(numGuess, setGuessInfoText, secretNumber, setNumGuess);
     if (secretNumber && numGuess === secretNumber) {
       setIsDisabled(true);
+      setColor("#4BB543");
     }
     //eslint-disable-next-line
   }, [numGuess]);
 
   return (
     <>
-      <input
+      <motion.input
         className="game-input"
         type="text"
         onChange={(event) => onNumChange(event)}
         value={numGuess}
         disabled={isDisabled}
+        whileFocus={{ scale: 1.2 }}
       />
-      <h2 className="span">{guessInfoText}</h2>
+      <motion.h2 className="span">{guessInfoText}</motion.h2>
     </>
   );
 };
