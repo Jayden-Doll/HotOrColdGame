@@ -13,11 +13,11 @@ export const hotOrColdLogic = (
   );
   if (inputValue > 100 || inputValue <= 0) setInputValue("");
   else if (numberDifference <= 2 && numberDifference > 0 && inputValue > 9) {
-    setGuessInfoText("🌶 Getting very hot...");
+    setGuessInfoText("🌶 You're boiling...");
     setGuessText(`Your guess was ${inputValue}`);
     setInputValue("");
   } else if (numberDifference >= 2 && numberDifference < 9 && inputValue > 9) {
-    setGuessInfoText("🏝 Getting warmer...");
+    setGuessInfoText("🏝 You're warm...");
     setGuessText(`Your guess was ${inputValue}`);
     setInputValue("");
   } else if (numberDifference >= 6 && numberDifference < 39 && inputValue > 9) {
