@@ -14,6 +14,11 @@ function App() {
     setRandomNumber(randomNumber);
   }, []);
 
+  const getRandomNumber = () => {
+    const randomNumber = Math.floor(Math.random() * 100) + 1;
+    setRandomNumber(randomNumber);
+  };
+
   return (
     <motion.div
       className="body"
@@ -30,6 +35,7 @@ function App() {
           setColor={setColor}
           bodyColor={color}
           secretNumber={randomNumber}
+          getRandomNumber={getRandomNumber}
         />
       </motion.div>
     </motion.div>

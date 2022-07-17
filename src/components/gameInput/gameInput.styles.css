@@ -2,4 +2,31 @@
   text-align: center;
   width: 2em;
   font-size: 3em;
+  border-radius: 0.15em;
+}
+
+.btn-retry {
+  border: none;
+  border-radius: 0.15em;
+  font-size: 1.25em;
+  padding: 0.5rem 1.5rem;
+  background-color: rgb(234, 234, 236);
+  transition: 0.1s ease-in-out;
+}
+
+.btn-retry:hover {
+  background-color: #333;
+  box-shadow: 0 5px 0 0px black;
+  transform: translateY(-2px);
+  color: rgb(234, 234, 236);
+  cursor: pointer;
+}
+
+.btn-retry:active {
+  box-shadow: none;
+  transform: translateY(2px);
+}
+
+.hidden {
+  visibility: hidden;
 }
