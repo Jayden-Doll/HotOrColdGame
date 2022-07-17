@@ -21,11 +21,12 @@ const GameInput = ({ secretNumber, setColor, getRandomNumber }) => {
   };
 
   const resetGame = () => {
+    setIsHidden("hidden");
     getRandomNumber();
+    setGuessText("");
     setInputValue("");
     setColor("#333");
     setGuessInfoText("Enter a number from 10 - 99!");
-    setIsHidden("hidden");
     setIsDisabled(false);
   };
 

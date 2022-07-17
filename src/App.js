@@ -17,6 +17,7 @@ function App() {
 
   const getRandomNumber = () => {
     const randomNumber = Math.floor(Math.random() * (99 - 10 + 1)) + 10;
+    setRandomNumber(randomNumber);
     console.log(randomNumber);
   };
 
