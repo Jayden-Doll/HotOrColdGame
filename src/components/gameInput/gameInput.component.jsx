@@ -5,39 +5,45 @@ import { hotOrColdLogic } from "../../utils";
 
 import "./gameInput.styles.css";
 
-const GameInput = ({ secretNumber, bodyColor, setColor, getRandomNumber }) => {
-  const [numGuess, setNumGuess] = useState("");
-
+const GameInput = ({ secretNumber, setColor, getRandomNumber }) => {
   const [isDisabled, setIsDisabled] = useState(false);
-  const [isHidden, setIsHidden] = useState("");
+  const [isHidden, setIsHidden] = useState("hidden");
 
+  const [inputValue, setInputValue] = useState("");
   const [guessInfoText, setGuessInfoText] = useState(
-    "Enter a number from 1 - 100!"
+    "Enter a number from 10 - 99!"
   );
+  const [guessText, setGuessText] = useState("");
 
   const onNumChange = (event) => {
     const inputValue = parseInt(event.target.value);
-    inputValue ? setNumGuess(inputValue) : setNumGuess("");
+    inputValue ? setInputValue(inputValue) : setInputValue("");
   };
 
   const resetGame = () => {
     getRandomNumber();
-    setNumGuess("");
+    setInputValue("");
     setColor("#333");
-    setGuessInfoText("Enter a number from 1 - 100!");
+    setGuessInfoText("Enter a number from 10 - 99!");
     setIsHidden("hidden");
     setIsDisabled(false);
   };
 
   useEffect(() => {
-    hotOrColdLogic(numGuess, setGuessInfoText, secretNumber, setNumGuess);
-    if (secretNumber && numGuess === secretNumber) {
+    hotOrColdLogic(
+      inputValue,
+      setGuessInfoText,
+      secretNumber,
+      setInputValue,
+      setGuessText
+    );
+    if (secretNumber && inputValue === secretNumber) {
       setIsDisabled(true);
       setColor("#4BB543");
       setIsHidden("");
     }
     //eslint-disable-next-line
-  }, [numGuess]);
+  }, [inputValue]);
 
   return (
     <>
@@ -45,11 +51,12 @@ const GameInput = ({ secretNumber, bodyColor, setColor, getRandomNumber }) => {
         className="game-input"
         type="text"
         onChange={(event) => onNumChange(event)}
-        value={numGuess}
+        value={inputValue}
         disabled={isDisabled}
         whileFocus={{ scale: 1.2 }}
       />
-      <motion.h2 className="span">{guessInfoText}</motion.h2>
+      <p>{guessText}</p>
+      <motion.p>{guessInfoText}</motion.p>
       <motion.button onClick={resetGame} className={`${isHidden} btn-retry`}>
         Retry
       </motion.button>

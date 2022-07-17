@@ -1,27 +1,41 @@
 export const hotOrColdLogic = (
-  numGuess,
+  inputValue,
   setGuessInfoText,
   secretNumber,
-  setNumGuess
+  setInputValue,
+  setGuessText
 ) => {
   const getNumberDifference = (num1, num2) => {
     return num1 - num2;
   };
   const numberDifference = Math.abs(
-    getNumberDifference(numGuess, secretNumber)
+    getNumberDifference(inputValue, secretNumber)
   );
-  if (numGuess > 100 || numGuess <= 0) {
-    setGuessInfoText("Enter a number from 1 - 100!");
-    setNumGuess("");
-  } else if (numberDifference <= 2 && numberDifference > 0)
-    setGuessInfoText("Getting very hot...");
-  else if (numberDifference >= 2 && numberDifference < 9)
-    setGuessInfoText("Getting warmer...");
-  else if (numberDifference >= 6 && numberDifference < 39)
-    setGuessInfoText("You're cold...");
-  else if (numberDifference >= 39 && numberDifference < 100)
-    setGuessInfoText("You're freezing...");
-  else if (numberDifference === 0 && secretNumber === 69)
-    setGuessInfoText("Nice... You Won!");
-  else setGuessInfoText("You Won!");
+  if (inputValue > 100 || inputValue <= 0) setInputValue("");
+  else if (numberDifference <= 2 && numberDifference > 0 && inputValue > 9) {
+    setGuessInfoText("🌶 Getting very hot...");
+    setGuessText(`Your guess was ${inputValue}`);
+    setInputValue("");
+  } else if (numberDifference >= 2 && numberDifference < 9 && inputValue > 9) {
+    setGuessInfoText("🏝 Getting warmer...");
+    setGuessText(`Your guess was ${inputValue}`);
+    setInputValue("");
+  } else if (numberDifference >= 6 && numberDifference < 39 && inputValue > 9) {
+    setGuessInfoText("🌨 You're cold...");
+    setGuessText(`Your guess was ${inputValue}`);
+    setInputValue("");
+  } else if (
+    numberDifference >= 39 &&
+    numberDifference < 100 &&
+    inputValue > 9
+  ) {
+    setGuessInfoText("🧊 You're freezing...");
+    setGuessText(`Your guess was ${inputValue}`);
+    setInputValue("");
+  } else if (numberDifference === 0 && secretNumber === 69 && inputValue > 9)
+    setGuessInfoText("🔥💯 Nice... You Won!");
+  else if (numberDifference === 0 && inputValue > 9) {
+    setGuessInfoText("🔥 You're on fire! You Won!");
+    setGuessText(`Your guess was ${inputValue}`);
+  }
 };

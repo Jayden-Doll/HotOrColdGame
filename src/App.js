@@ -10,13 +10,14 @@ function App() {
   const [randomNumber, setRandomNumber] = useState("");
 
   useEffect(() => {
-    const randomNumber = Math.floor(Math.random() * 100) + 1;
+    const randomNumber = Math.floor(Math.random() * (99 - 10 + 1)) + 10;
     setRandomNumber(randomNumber);
+    console.log(randomNumber);
   }, []);
 
   const getRandomNumber = () => {
-    const randomNumber = Math.floor(Math.random() * 100) + 1;
-    setRandomNumber(randomNumber);
+    const randomNumber = Math.floor(Math.random() * (99 - 10 + 1)) + 10;
+    console.log(randomNumber);
   };
 
   return (
